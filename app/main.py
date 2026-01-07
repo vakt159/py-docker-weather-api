@@ -11,9 +11,12 @@ FILTERING = "Paris"
 
 
 def get_weather() -> None:
+    if not KEY:
+        print("API_KEY is missing")
     print("Performing request to Weather API for city Paris...")
 
     response = requests.get(URL + f"key={KEY}&q={FILTERING}")
+    response.raise_for_status()
     data = response.json()
 
     city = data["location"]["name"]
