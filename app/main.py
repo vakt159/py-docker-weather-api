@@ -10,9 +10,9 @@ KEY = os.getenv("API_KEY")
 FILTERING = "Paris"
 
 
-def get_weather() -> None:
+def get_weather() -> str | None:
     if not KEY:
-        print("API_KEY is missing")
+        return "API_KEY is missing"
     print("Performing request to Weather API for city Paris...")
 
     response = requests.get(URL + f"key={KEY}&q={FILTERING}")
